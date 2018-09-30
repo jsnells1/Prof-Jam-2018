@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     private Transform leftShinBone;
     private Transform rightShinBone;
 
+    public Transform playerMain;
+
     private readonly float rotationFactor = 40f;
 
     private float thighRotation = 0f;
@@ -20,7 +22,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         //toe = gameObject.transform.Find("MakeHuman default skeleton/root/pelvis.L/upperleg01.L/upperleg02.L/lowerleg01.L/lowerleg02.L/foot.L/toe1-1.L").GetComponent<BoxCollider>();
-        
+        playerMain = gameObject.transform;
     }
 
     // Start is called before the first frame update
@@ -46,6 +48,8 @@ public class Player : MonoBehaviour
         {
             UpdateLowerBody(thighAxis, shinAxis);
         }
+
+        playerMain.eulerAngles = new Vector3(0f, 90f, 0f);
     }
 
     void UpdateLowerBody(float upperLegInput, float lowerLegInput)
