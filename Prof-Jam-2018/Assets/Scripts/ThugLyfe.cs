@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class ThugLyfe : MonoBehaviour
 {
-    bool isMoving;
-    public float moveSpeed;
-    float lerpPosition = 0;
-    Vector3 initialPosition;
+    bool hasAlreadyCollided;
     public List<SpriteRenderer> glassesParts;
-    public Transform glasses;
-    public Transform glassesFacePosition;
+    public AudioSource sound;
+    public EnemyMovement em;
 
-    private void Update()
+    void Start()
     {
-        //if (glasses.Translate(Mathf.Lerp(initialPosition.y, 0f, Time.deltaTime * moveSpeed));
+        hasAlreadyCollided = false;
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (!hasAlreadyCollided && collision.gameObject.tag == "Player")
+        {
+            hasAlreadyCollided = true;
+            Debug.Log("Collided with player");
             YoHoYoHoThugishLyfesForMe();
+        }
+            
     }
 
     void YoHoYoHoThugishLyfesForMe()
@@ -29,8 +31,8 @@ public class ThugLyfe : MonoBehaviour
         {
             sr.enabled = true;
         }
-
-        isMoving = true;
-        initialPosition = glasses.position;
+        sound.enabled = true;
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        em.Countdown();
     }
 }

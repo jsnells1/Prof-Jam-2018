@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     {
         Transform floor = GameObject.Find("Floor").transform;
 
-        Vector3 playerPosition = new Vector3(-118.5f, floor.position.y + Mathf.Epsilon, 0);
+        Vector3 playerPosition = new Vector3(-118.5f, floor.position.y + 1f, 0);
 
         Instantiate(player, playerPosition, Quaternion.Euler(0, 90, 0));
     }
@@ -30,4 +30,5 @@ public class GameManager : MonoBehaviour
     {
 
     }
+
 }

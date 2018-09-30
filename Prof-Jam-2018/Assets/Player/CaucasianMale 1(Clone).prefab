@@ -3195,6 +3195,7 @@ GameObject:
   - component: {fileID: 6647611932758453261}
   - component: {fileID: 8191540674384577519}
   - component: {fileID: 8012129028633678409}
+  - component: {fileID: 7516282945630915588}
   m_Layer: 4
   m_Name: WaterProDaytime
   m_TagString: Untagged
@@ -3283,6 +3284,21 @@ MonoBehaviour:
   refractLayers:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7516282945630915588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4911171079498142290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3e40bc903ff0041a9e05a505bb211c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coffee: {fileID: 3231794702139111517}
+  player: {fileID: 218166786369194235}
+  rotationDampening: 1
 --- !u!1 &4979852831462757357
 GameObject:
   m_ObjectHideFlags: 0
@@ -3888,7 +3904,7 @@ GameObject:
   - component: {fileID: 6369279781110116006}
   m_Layer: 0
   m_Name: CaucasianMale 1(Clone)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
