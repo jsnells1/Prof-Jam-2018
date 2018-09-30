@@ -30,17 +30,25 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float thighMovement = Input.GetAxis("Thighs");
-        float shinMovement = Input.GetAxis("Shins");
+        float thighAxis = Input.GetAxis("Thighs");
+        float shinAxis = Input.GetAxis("Shins");
 
-        if (thighMovement != 0)
+        if (thighAxis != 0 || shinAxis != 0)
+        {
+            UpdateLowerBody(thighAxis, shinAxis);
+        }
+    }
+
+    void UpdateLowerBody(float upperLegInput, float lowerLegInput)
+    {
+        if (upperLegInput != 0)
         {
             Vector3 lt_rotation = leftThighBone.eulerAngles;
             Vector3 rt_rotation = rightThighBone.eulerAngles;
 
             // Q = -1
             // W = 1
-            if (thighMovement < 0)
+            if (upperLegInput < 0)
             {
                 if (thighRotation == 60)
                 {
@@ -78,7 +86,7 @@ public class Player : MonoBehaviour
         }
 
         // Rotates knee
-        if (shinMovement > 0)
+        if (lowerLegInput > 0)
         {
             Vector3 ls_rotation = leftShinBone.localEulerAngles;
             Vector3 rs_rotation = rightShinBone.localEulerAngles;
@@ -99,7 +107,7 @@ public class Player : MonoBehaviour
             leftShinBone.localEulerAngles = ls_rotation;
             rightShinBone.localEulerAngles = rs_rotation;
         }
-        else if (shinMovement < 0)
+        else if (lowerLegInput < 0)
         {
             Vector3 ls_rotation = leftShinBone.localEulerAngles;
             Vector3 rs_rotation = rightShinBone.localEulerAngles;
@@ -121,5 +129,4 @@ public class Player : MonoBehaviour
             rightShinBone.localEulerAngles = rs_rotation;
         }
     }
-
 }
