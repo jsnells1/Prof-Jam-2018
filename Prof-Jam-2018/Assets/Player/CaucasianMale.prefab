@@ -4100,6 +4100,8 @@ GameObject:
   - component: {fileID: 1012062247589449129}
   - component: {fileID: 1012062247598547533}
   - component: {fileID: 4037439682993929479}
+  - component: {fileID: 5118852329749426114}
+  - component: {fileID: 6272346397753845229}
   m_Layer: 0
   m_Name: CaucasianMale
   m_TagString: Untagged
@@ -4115,8 +4117,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012062247589024137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.202, z: 0}
+  m_LocalScale: {x: 2.25, y: 2.25, z: 2.25}
   m_Children:
   - {fileID: 1012062247589449131}
   - {fileID: 1012062247589449151}
@@ -4138,7 +4140,7 @@ Animator:
   m_GameObject: {fileID: 1012062247589024137}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 8b41235f3adb44f49ba4a0f1dcb446d2, type: 3}
-  m_Controller: {fileID: 9100000, guid: c04a4a7cf547b6b4ba453d54aa5863ac, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4159,6 +4161,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60acafd3f5c194d48bbae97d6ede008b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &5118852329749426114
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012062247589024137}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &6272346397753845229
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012062247589024137}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 8b41235f3adb44f49ba4a0f1dcb446d2, type: 3}
 --- !u!1 &1012062247589024139
 GameObject:
   m_ObjectHideFlags: 0

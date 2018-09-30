@@ -14,6 +14,15 @@ public class Player : MonoBehaviour
     private float leftShinRotation;
     private float rightShinRotation;
 
+    BoxCollider toe;
+    BoxCollider heel;
+
+    private void Awake()
+    {
+        //toe = gameObject.transform.Find("MakeHuman default skeleton/root/pelvis.L/upperleg01.L/upperleg02.L/lowerleg01.L/lowerleg02.L/foot.L/toe1-1.L").GetComponent<BoxCollider>();
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
