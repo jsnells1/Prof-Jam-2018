@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class BoneScript : MonoBehaviour
 {
+    private float xPos;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        xPos = transform.position.x; 
     }
 
     // Update is called once per frame
@@ -16,8 +18,18 @@ public class BoneScript : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision");
+
+        xPos = transform.position.x;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        Vector3 positionVec = transform.position;
+
+        positionVec.x = xPos;
+
+        //transform.position = positionVec;
     }
 }

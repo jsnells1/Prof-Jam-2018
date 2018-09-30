@@ -2,13 +2,15 @@
 
 public class Player : MonoBehaviour
 {
+    private Camera mainCam;
+
     private Transform leftThighBone;
     private Transform rightThighBone;
 
     private Transform leftShinBone;
     private Transform rightShinBone;
 
-    public Transform playerMain;
+    private Transform playerMain;
 
     private readonly float rotationFactor = 40f;
 
@@ -16,13 +18,29 @@ public class Player : MonoBehaviour
     private float leftShinRotation;
     private float rightShinRotation;
 
-    BoxCollider toe;
-    BoxCollider heel;
+    private float xPos;
+    //private float yPos;
+    private float zPos;
+
+    //private BoxCollider leftFoot;
+    //private BoxCollider rightFoot;
 
     private void Awake()
     {
-        //toe = gameObject.transform.Find("MakeHuman default skeleton/root/pelvis.L/upperleg01.L/upperleg02.L/lowerleg01.L/lowerleg02.L/foot.L/toe1-1.L").GetComponent<BoxCollider>();
+        //Transform root = transform.Find("MakeHuman default skeleton/root");
+
+        //leftFoot = root.Find("pelvis.L/upperleg01.L/upperleg02.L/lowerleg01.L/lowerleg02.L/foot.L/toe5-1.L").GetComponent<BoxCollider>();
+        //rightFoot = root.Find("pelvis.R/upperleg01.R/upperleg02.R/lowerleg01.R/lowerleg02.R/foot.R/toe5-1.R").GetComponent<BoxCollider>();
+
+        //Debug.Log(leftFoot.);
+
+        mainCam = Camera.allCameras[0];
+
         playerMain = gameObject.transform;
+
+        xPos = playerMain.position.x;
+        zPos = playerMain.position.z;
+
     }
 
     // Start is called before the first frame update
@@ -49,7 +67,25 @@ public class Player : MonoBehaviour
             UpdateLowerBody(thighAxis, shinAxis);
         }
 
+        float playerStrafe = Input.GetAxis("PlayerMove");
+
+        if (playerStrafe < 0)
+        {
+            zPos += Time.deltaTime * 2f;
+        }
+        else if (playerStrafe > 0)
+        {
+            zPos -= Time.deltaTime * 2f;
+        }
+
+        zPos = Mathf.Clamp(zPos, -2f, 2.25f);
+
         playerMain.eulerAngles = new Vector3(0f, 90f, 0f);
+
+        xPos = Mathf.Max(playerMain.position.x, xPos);
+
+        playerMain.position = new Vector3(xPos, playerMain.position.y, zPos);
+
     }
 
     void UpdateLowerBody(float upperLegInput, float lowerLegInput)
@@ -99,6 +135,7 @@ public class Player : MonoBehaviour
         }
 
         // Rotates knee
+        //-1 = left back
         if (lowerLegInput > 0)
         {
             Vector3 ls_rotation = leftShinBone.localEulerAngles;
@@ -116,6 +153,9 @@ public class Player : MonoBehaviour
             {
                 ls_rotation.x = 90;
             }
+
+
+
 
             leftShinBone.localEulerAngles = ls_rotation;
             rightShinBone.localEulerAngles = rs_rotation;
